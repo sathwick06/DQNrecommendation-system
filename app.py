@@ -296,13 +296,6 @@ class RecommendationEnvironment:
         product_idx = action
         product_id = list(self.product_to_idx.keys())[product_idx]
         product_cat = self.products_df[self.products_df['product_id'] == product_id] ['category'].values[0]
-
-        # Get state BEFORE taking action
-        current_state = self.get_state()
-
-        print(f"\n🔹 ACTION TAKEN: Recommend product_id={product_id}, category={product_cat}")
-        print(f"🔹 Recommended so far: {self.recommended_products}")
-        print(f"🔹 Previous categories: {self.previous_categories}")
         
         # Calculate reward
         reward = self.calculate_reward(product_id)
@@ -316,11 +309,6 @@ class RecommendationEnvironment:
         done = len(self.recommended_products) >= 5
 
         next_state = self.get_state()
-
-        print(f"\n📊 STATE VECTOR BEFORE STEP:\n{current_state}")
-        print(f"📊 STATE VECTOR AFTER STEP (NEXT STATE):\n{next_state}")
-        print(f"🏆 Reward for action: {reward}")
-        print(f"✅ Done: {done}")
         
         return next_state, reward, done
     
