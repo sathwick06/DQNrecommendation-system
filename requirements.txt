@@ -7,3 +7,6 @@ faiss-cpu==1.11.0
 scikit-learn==1.2.2
 protobuf<6.0.0
 setuptools>=65.5.1
+wheel>=0.41.0
+pip>=24.0
+pillow==9.4.0
